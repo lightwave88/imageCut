@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .image-container {
+            user-select: none;
+            width: 1000px;
+            height: 600px;
+            border: 1px solid;
+            position: relative;
+            overflow: scroll;
+        }
+
+        .image {
+            width: 500px;
+            height: 350px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* margin-top: -200px; */
+            /* margin-left: -250px; */
+        }
+
+        .bg {
+            z-index: 1;
+            background-color: #0F0;
+            opacity: 0.3;
+            /* border: 1px dashed; */
+        }
+
+        .bg-top {
+            width: 100%;
+            height: 12.5%;
+        }
+
+        .bg-right {
+            float: right;
+            height: 75%;
+            width: 12.5%;
+        }
+
+        .bg-bottom {
+            clear: both;
+            width: 100%;
+            height: 12.5%;
+        }
+
+        .bg-left {
+            float: left;
+            height: 75%;
+            width: 12.5%;
+        }
+
+        /*  */
+
+        .smallbox {
+            z-index: 2;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid;
+            background-color: #FFF;
+        }
+
+        .box-top {
+            top: 0;
+            left: 50%;
+        }
+
+        .box-right {
+            top: 50%;
+            left: 100%;
+        }
+
+        .box-bottom {
+            top: 100%;
+            left: 50%;
+        }
+
+        .box-left {
+            top: 50%;
+            left: 0;
+        }
+
+        #msg_1 {
+            width: 400px;
+            height: 50px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: 1px solid;
+        }
+    </style>
+    <script src="./js_lib/jquery-3.2.1.min.js"></script>
+    <script src="./js_lib/underscore-1.8.3-min.js"></script>
+    <script src="./js_lib/imageCut_1.js"></script>
+</head>
+
+<body>
+    <div class="image-container">
+        <p id="msg_1"></p>
+        <div class="image">
+            <div class="smallbox box-top"></div>
+            <div class="smallbox box-right"></div>
+            <div class="smallbox box-bottom"></div>
+            <div class="smallbox box-left"></div>
+            <div class="bg bg-top"></div>
+            <div class="bg bg-left"></div>
+            <div class="bg bg-right"></div>
+            <div class="bg bg-bottom"></div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            new ImageCut({
+                el: 'div.image-container'
+            });
+        })();
+    </script>
+</body>
+
+</html>

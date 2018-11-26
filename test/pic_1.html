@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js_lib/jquery-3.2.1.min.js"></script>
+    <script>
+        let _img;
+
+        function t_1() {
+            let p = Promise.resolve();
+
+            p = p.then(function () {
+                return t_2();
+            });
+
+
+            p.then(function (data) {
+                alert(data);
+            });
+        }
+
+        function t_2() {
+            let def = $.Deferred();
+
+            _img = new Image();
+            _img.src = './img/bg.jpeg';
+
+          _img.onload =
+        }
+    </script>
+</head>
+
+<body>
+    <div id="a1">
+        <img id='msg_1' src="" alt="">
+    </div>
+    <div>
+        <button onclick="t_1()">t_1</button>
+        <button onclick="t_2()">t_2</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #t_1 {
+            height: 100px;
+            background-color: #00F;
+            position: relative;
+            left: 50px;
+        }
+
+        div.box {
+            height: 10px;
+            width: 10px;
+            background-color: #F00;
+            position: absolute;
+            top: 20px;
+            left: 40%;
+            cursor: pointer;
+            z-index: 11;
+        }
+
+        div.bg {
+            width: 50%;
+            height: 100%;
+            background-color: #0F0;
+            float: right;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+    <script src="./js_lib/jquery-3.2.1.min.js"></script>
+    <script src="./js_lib/underscore-1.8.3-min.js"></script>
+    <script>
+        var updateFn = _.debounce(function (e, t1, x, y) {
+            let t2 = e.target;
+            let _x = e.offsetX;
+            let _y = e.offsetY;
+
+            let left, top;
+            // console.dir(e);
+
+            if (!e.target.isEqualNode(t1)) {
+                // 只有 target 不等於小方塊
+
+
+                if (e.target.isEqualNode(e.currentTarget)) {
+                    // 游標在畫布上
+                    left = _x - x;
+                    top = _y - y;
+                } else {
+                    // 游標不在畫布上
+                    // 在畫布的 child 上
+                    let position = $(e.target).position();
+                    left = _x - x + position.left;
+                    top = _y - y + position.top;
+                }
+
+                console.log(_x + ',' + _y);
+
+                $(t1).css({
+                    left: left,
+                    top: top
+                });
+            }
+        }, 10);
+
+        $(document).ready(function () {
+
+            $('div.box').on('mousedown', function (e) {
+                let t1 = e.target;
+                let x = e.offsetX;
+                let y = e.offsetY;
+
+                $('#t_1').on('mousemove', function(e){
+                    updateFn(e, t1, x, y);
+                });
+            });
+
+            $('#t_1').on('mouseup', function (e) {
+                $('#t_1').off('mousemove');
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="t_1">
+        <div class="box">
+
+        </div>
+        <div class="bg">
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #t_1 {
+            height: 100px;
+            background-color: #00F;
+            position: relative;
+            left: 50px;
+        }
+
+        div.box {
+            height: 10px;
+            width: 10px;
+            background-color: #F00;
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="./js_lib/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('div.box').on('mousedown', function (e) {
+                let t1 = e.target;
+                let x = e.offsetX;
+                let y = e.offsetY;
+
+                $('#t_1').on('mousemove', function (e) {
+                    let t2 = e.target;
+                    let _x = e.offsetX;
+                    let _y = e.offsetY;
+
+                    if (e.target.isEqualNode(e.currentTarget)) {
+                        // console.log(_x);
+
+                        $(t1).css({
+                            left: (_x - x),
+                            top: (_y - y)
+                        });
+                    }
+                });
+            });
+
+            $('#t_1').on('mouseup', function (e) {
+                $('#t_1').off('mousemove');
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="t_1">
+        <div class="box">
+
+        </div>
+    </div>
+</body>
+
+</html>

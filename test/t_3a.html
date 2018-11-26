@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/imageCut.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .image-container {
+            background-color: #000;
+            user-select: none;
+            width: 100%;
+            height: 600px;
+            border: 1px solid;
+            position: relative;
+            overflow: scroll;
+            user-select: none;
+        }
+
+        /*--------------------------*/
+
+        .ct_imageBackbroud {
+            /* width: 500px; */
+            /* height: 350px; */
+            /* margin-left: -250px; */
+            /* margin-top: -175px; */
+            background-color: #FFA;
+
+        }
+
+        #msg_1 {
+            width: 400px;
+            height: 50px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: 1px solid;
+            word-break: break-all;
+            color: #FFF;
+        }
+    </style>
+    <script src="./js_lib/jquery-3.2.1.min.js"></script>
+    <script src="./js_lib/underscore-1.8.3-min.js"></script>
+    <script src="./js_lib/imageCut_3a.js"></script>
+    <script>
+        function t_1() {
+            ImageCut.updateImage('a', "img/series_area88.jpg");
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <h4>
+            3 測試環境
+        </h4>
+    </div>
+    <div class="image-container">
+        <div class="ct_canvas">
+            <div class=ct_imageBackbroud>
+                <div class="ct_1">
+                    <div class="ct_bg ct_bg-top"></div>
+                    <div class="ct_bg ct_bg-left"></div>
+                    <div class="ct_bg ct_bg-right"></div>
+                    <div class="ct_bg ct_bg-bottom"></div>
+                </div>
+                <div class="ct_1 ct_operateArea">
+                    <div class="ct_controlePoint" position="0"></div>
+                    <div class="ct_controlePoint" position="1"></div>
+                    <div class="ct_controlePoint" position="2"></div>
+                    <div class="ct_controlePoint" position="3"></div>
+                    <div class="ct_controlePoint" position="4"></div>
+                    <div class="ct_controlePoint" position="5"></div>
+                    <div class="ct_controlePoint" position="6"></div>
+                    <div class="ct_controlePoint" position="7"></div>
+                    <div class="ct_selectArea">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p id="msg_1"></p>
+
+    </div>
+    <div>
+        <button onclick="t_1()">changemage</button>
+    </div>
+    <div id="test_1">
+
+    </div>
+    <script>
+        let obj;
+        (function () {
+            $('body').on('area', function (e, a) {
+                $('#msg_1').html(a);
+            });
+            //----------------------
+            debugger;
+            ImageCut.setElement('a', {
+                root: 'div.image-container',
+                src: './img/bg.jpeg'
+            });
+        })();
+    </script>
+</body>
+
+</html>

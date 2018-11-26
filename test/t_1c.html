@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #t_1 {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 100px;
+            background-color: #00F;
+            position: relative;
+            left: 50px;
+        }
+
+        div.box {
+            height: 15px;
+            width: 15px;
+            background-color: #F00;
+            position: absolute;
+            top: 20px;
+            left: 40%;
+            cursor: pointer;
+            z-index: 11;
+        }
+
+        div.bg {
+            width: 50%;
+            height: 100%;
+            background-color: #0F0;
+            float: right;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+    <script src="./js_lib/jquery-3.2.1.min.js"></script>
+    <script src="./js_lib/underscore-1.8.3-min.js"></script>
+    <script>
+        var updateFn = function (e, t1) {
+            let t2 = e.target;
+            let l = e.offsetX;
+            let t = e.offsetY;
+            // console.dir(e);
+
+            
+                // 只有 target 不等於小方塊
+
+                let root = document.querySelector('#t_1');
+
+                let position = getBoxPosition(root, t2, l, t);
+
+
+                console.log(position.left + ',' + position.top);
+
+                $(t1).css({
+                    left: position.left
+                });
+                /*--------------------------*/
+                let width = $(root).outerWidth() - position.left;
+
+                $('#bg').css({
+                    width: width
+                })
+
+            
+        };
+        /*------------------------------------*/
+        $(document).ready(function () {
+
+            $('div.box').on('mousedown', function (e) {
+                let t1 = e.target;
+                
+
+                $('#t_1').on('mousemove', function (e) {
+                    updateFn(e, t1);
+                });
+            });
+
+            $('#t_1').on('mouseup', function (e) {
+                $('#t_1').off('mousemove');
+            });
+
+        });
+
+
+        function getBoxPosition(root, target, left, top) {
+            
+            if(target == null){
+                alert('problem');
+                return;
+            }
+
+            while (!root.isEqualNode(target)) {
+                let p = $(target).position();
+
+                left += p.left;
+                top += p.top;
+
+                target = target.parentNode;
+            }
+
+            return {
+                left: left,
+                top: top
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="t_1">
+        <div class="box">
+
+        </div>
+        <div class="bg" id="bg">
+        </div>
+    </div>
+</body>
+
+</html>

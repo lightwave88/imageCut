@@ -1,0 +1,152 @@
+/* imageCut 專用 */
+.ct_canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.ct_imageBackbroud {
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0;
+    outline: none !important;
+    /*  */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #FFA;
+    user-select: none;
+    z-index: 1;
+}
+
+
+
+.ct_imageBackbroud {
+    width: 100%;
+    height: 100%;
+}
+
+.ct_1 {
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    outline: none !important;
+    /*  */
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.ct_operateArea {
+    z-index: 8;
+}
+
+
+/*--------------------------*/
+
+.ct_selectArea {
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    outline: none !important;
+    /*  */
+    z-index: 9;
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    left: 0;
+    top: 0;
+    border: 1px dotted;
+    opacity: 0.7;
+}
+
+
+/*--------------------------*/
+
+.ct_bg {
+    z-index: 1;
+    background-color: #000;
+    opacity: 0.7;
+    /* border: 1px dashed; */
+    user-select: none;
+}
+
+.ct_bg-top {
+    width: 100%;
+    height: 12%;
+}
+
+.ct_bg-right {
+    float: right;
+    height: 75%;
+    width: 12%;
+}
+
+.ct_bg-bottom {
+    clear: both;
+    width: 100%;
+    height: 12%;
+}
+
+.ct_bg-left {
+    float: left;
+    height: 75%;
+    width: 12%;
+}
+
+
+/*--------------------------*/
+
+.ct_controlePoint {
+    z-index: 10;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 1px solid;
+    background-color: #FFF;
+    user-select: none;
+}
+
+.ct_controlePoint[position="0"] {
+    top: 0;
+    left: 50%;
+}
+
+.ct_controlePoint[position="1"] {
+    top: 0;
+    left: 100%;
+}
+
+.ct_controlePoint[position="2"] {
+    top: 50%;
+    left: 100%;
+}
+
+.ct_controlePoint[position="3"] {
+    top: 100%;
+    left: 100%;
+}
+
+.ct_controlePoint[position="4"] {
+    top: 100%;
+    left: 50%;
+}
+
+.ct_controlePoint[position="5"] {
+    top: 100%;
+    left: 0;
+}
+
+.ct_controlePoint[position="6"] {
+    top: 50%;
+    left: 0;
+}
+
+.ct_controlePoint[position="7"] {
+    top: 0;
+    left: 0;
+}

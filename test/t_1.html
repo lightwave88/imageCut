@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #t_1{
+            height: 100px;
+            background-color: #00F;
+            position: relative;
+        }
+
+        div.box{
+            height: 10px;
+            width: 10px;
+            background-color: #F00;
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="./js_lib/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('div.box').on('drag dragend', function(e){
+                var t = e.target;
+                var left = e.clientX;
+
+                $(t).css({
+                    left: left
+                })
+            });
+
+            
+        });
+    </script>
+</head>
+<body>
+    <div id="t_1">
+        <div class="box" draggable="true">
+
+        </div>
+    </div>
+</body>
+</html>
